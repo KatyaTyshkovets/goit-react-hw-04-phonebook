@@ -11,8 +11,8 @@ import { Box, Button } from './FeedbackOptions.styled';
                 <Button
                     key={option}
                     type="button"
-                    onClick={onLeaveFeedback}
-                    id={option}
+                    onClick={()=>onLeaveFeedback(option)}
+                    value={option}
                 >
                     {option}
                 </Button>
