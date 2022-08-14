@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import { ErrorMessage, Formik } from "formik";
 import * as yup from 'yup';
 import { Input, FormContact, Label, Button, Error} from './ContactForm.styled';
@@ -29,41 +28,39 @@ const FormError = ({ name }) => {
     );
 };
 
-  class ContactForm extends Component {
-     handleSubmit = (values, { resetForm }) => {
-         this.props.onSubmit(values);
-         console.log(values);
-         resetForm();
-     };
-       render() {
-       
-           return (
-               <Formik
-                   initialValues={{
-                       name: '',
-                       number: '',
-                   }}
-                   validationSchema={schema}
-                   onSubmit={this.handleSubmit}>
-                <FormContact>
-                    <Label htmlFor="name">
-                        Name 
-                           <Input type="text" name="name" />
-                           <FormError name="name" />
-                    </Label>
-                    <Label htmlFor="number">
-                        Number 
-                           <Input type="tel" name="number" />
-                           <FormError name="number" />
-                    </Label>
-                    <Button type="submit">Add contact</Button>
+const ContactForm = ({ onSubmit }) => {
+    const handleSubmit = (values, { resetForm }) => {
+        onSubmit(values);
+        console.log(values);
+        resetForm();
+    };
+    return (
+        <Formik
+            initialValues={{
+                name: '',
+                number: '',
+            }}
+            validationSchema={schema}
+            onSubmit={handleSubmit}>
+            <FormContact>
+                <Label htmlFor="name">
+                    Name
+                    <Input type="text" name="name" />
+                    <FormError name="name" />
+                </Label>
+                <Label htmlFor="number">
+                    Number
+                    <Input type="tel" name="number" />
+                    <FormError name="number" />
+                </Label>
+                <Button type="submit">Add contact</Button>
 
-                </FormContact>
-            </Formik>
+            </FormContact>
+        </Formik>
     );
-    }
-    
 };
+    
+
 
 
 

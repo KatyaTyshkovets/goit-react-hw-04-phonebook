@@ -5,7 +5,7 @@ import {ContactItem} from '../ItemList/Item';
 
 
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
+ const ContactList = ({ contacts, onDeleteContact }) => {
   return (
     <List>
       {contacts.map(({ id, name, number }) => (
